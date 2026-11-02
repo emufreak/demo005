@@ -165,7 +165,7 @@ __umodsi3:
 	.cfi_endproc
 	.size __umodsi3, .-__umodsi3
 
-	
+
 	.section .text.KPutCharX,"ax",@progbits
 	.type KPutCharX, function
 	.globl	KPutCharX

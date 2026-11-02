@@ -1,4 +1,4 @@
-#include "gcc8_c_support.h"
+#include "gcc8_c.h"
 #include <proto/exec.h>
 extern struct ExecBase* SysBase;
 
@@ -50,7 +50,7 @@ void memclr(void* dest, unsigned long len) { // dest: 16bit-aligned, len: multip
 	: "memory", "d0", "d1", "d2", "d3", "cc");
 }
 
-__attribute__((optimize("no-tree-loop-distribute-patterns"))) 
+__attribute__((optimize("no-tree-loop-distribute-patterns")))
 void* memset(void *dest, int val, unsigned long len) {
 	unsigned char *ptr = (unsigned char *)dest;
 	while(len-- > 0)
@@ -58,7 +58,7 @@ void* memset(void *dest, int val, unsigned long len) {
 	return dest;
 }
 
-__attribute__((optimize("no-tree-loop-distribute-patterns"))) 
+__attribute__((optimize("no-tree-loop-distribute-patterns")))
 void* memcpy(void *dest, const void *src, unsigned long len) {
 	char *d = (char *)dest;
 	const char *s = (const char *)src;
@@ -67,7 +67,7 @@ void* memcpy(void *dest, const void *src, unsigned long len) {
 	return dest;
 }
 
-__attribute__((optimize("no-tree-loop-distribute-patterns"))) 
+__attribute__((optimize("no-tree-loop-distribute-patterns")))
 void* memmove(void *dest, const void *src, unsigned long len) {
 	char *d = dest;
 	const char *s = src;
@@ -85,7 +85,7 @@ void* memmove(void *dest, const void *src, unsigned long len) {
 
 // vbcc
 typedef unsigned char *va_list;
-#define va_start(ap, lastarg) ((ap)=(va_list)(&lastarg+1)) 
+#define va_start(ap, lastarg) ((ap)=(va_list)(&lastarg+1))
 
 void KPutCharX();
 void PutChar();
